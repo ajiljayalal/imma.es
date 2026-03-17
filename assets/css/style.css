@@ -1,4 +1,28 @@
-/* Global Reset */
+/* --- 1. Variables & Authentic Palette --- */
+:root {
+    /* Primary Colors */
+    --kerala-green: #0b6e4f;       /* Deep tropical green */
+    --kerala-green-dark: #074a35;
+    --kerala-gold: #d4a017;        /* Traditional Kasavu gold */
+    --kerala-gold-light: #f2c94c;
+    
+    /* Backgrounds & Textures */
+    --kasavu-ivory: #fffdf7;       /* Warm off-white base */
+    --soft-sand: #f8f5e6;
+    --text-main: #1a1a1a;
+    --text-muted: #555;
+
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-blur: 12px;
+    --glass-shadow: 0 8px 32px 0 rgba(11, 110, 79, 0.15);
+
+    /* Animation */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* --- 2. Global Reset & Typography --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,192 +30,281 @@
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    background: #fffdf7;
-    color: #2b2b2b;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--kasavu-ivory);
+    color: var(--text-main);
+    line-height: 1.8;
+    overflow-x: hidden;
 }
 
-/* Kerala Color Palette */
-:root {
-    --kerala-green: #0b6e4f;
-    --kerala-gold: #d4a017;
-    --kerala-blue: #1a759f;
-    --soft-bg: #faf6e9;
-    --soft-border: #e8d9b5;
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif; /* More elegant for headings */
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-/* Navbar */
+/* --- 3. Glassmorphism Navbar --- */
 .navbar {
-    background: var(--kerala-green);
-    padding: 16px 24px;
-    color: white;
+    position: fixed; /* Sticky header */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 5px solid var(--kerala-gold);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    
+    /* Glass Effect */
+    background: rgba(11, 110, 79, 0.85); /* Green tint */
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
 }
 
 .logo {
-    font-weight: 700;
-    font-size: 1.3rem;
-    letter-spacing: 0.5px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--kerala-gold); /* Accent color for part of logo */
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 35px;
 }
 
 .nav-links a {
-    color: white;
+    color: rgba(255,255,255,0.9);
     text-decoration: none;
-    font-size: 1rem;
     font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 5px;
     transition: 0.3s;
+}
+
+/* Gold Underline Animation */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--kerala-gold);
+    transition: width 0.3s var(--ease-out);
 }
 
 .nav-links a:hover {
     color: var(--kerala-gold);
-    transform: scale(1.05);
 }
 
-/* Hero Section */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- 4. Organic Hero Section (Parallax) --- */
 .hero {
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0.55)
-    ),
-    url('../images/Kerala_Backwaters.jpg') center/cover no-repeat;
-    padding: 140px 20px;
+    position: relative;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     color: white;
-    border-bottom: 8px solid var(--kerala-gold);
+    padding: 0 20px;
+    margin-bottom: 50px;
+    
+    /* Parallax Background Image */
+    background: linear-gradient(
+        to bottom,
+        rgba(11, 60, 40, 0.5),
+        rgba(11, 60, 40, 0.7)
+    ),
+    url('https://images.unsplash.com') center/cover no-repeat fixed;
+    
+    /* Organic Curve at Bottom */
+    clip-path: ellipse(160% 100% at 50% 0%);
 }
 
 .hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 12px;
-    text-shadow: 0 3px 6px rgba(0,0,0,0.5);
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Responsive font size */
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    animation: fadeUp 1s var(--ease-out);
 }
 
 .hero p {
     font-size: 1.2rem;
-    max-width: 750px;
-    margin: 0 auto;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+    animation: fadeUp 1.2s var(--ease-out);
 }
 
-/* Decorative Kerala Divider */
-.kerala-divider {
-    width: 100%;
-    height: 40px;
-    background: url('../images/coconut-leaf-divider.png') center/contain no-repeat;
-    margin: 20px 0;
-}
-
-/* Sections */
-.section {
-    padding: 60px 20px;
-    text-align: center;
-    background: white;
-    border-bottom: 1px solid var(--soft-border);
-}
-
-.section-alt {
-    background: var(--soft-bg);
-}
-
-.section h2 {
-    font-size: 2rem;
-    color: var(--kerala-green);
-    margin-bottom: 14px;
-}
-
-.section p {
-    max-width: 750px;
-    margin: 0 auto 20px;
-    font-size: 1.05rem;
-}
-
-/* Buttons */
+/* --- 5. Modern Pill Buttons --- */
 .btn {
     display: inline-block;
-    padding: 12px 28px;
-    background: var(--kerala-green);
-    color: white;
-    border-radius: 6px;
+    padding: 16px 40px;
+    background: var(--kerala-gold);
+    color: var(--kerala-green-dark);
+    border-radius: 50px; /* Pill shape */
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    border: 2px solid var(--kerala-gold);
-    transition: 0.3s;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(212, 160, 23, 0.3);
+    transition: all 0.3s var(--ease-out);
+    border: 2px solid transparent;
 }
 
 .btn:hover {
-    background: var(--kerala-gold);
-    color: #2b2b2b;
-    transform: translateY(-3px);
+    background: transparent;
+    color: var(--kerala-gold);
+    border-color: var(--kerala-gold);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(212, 160, 23, 0.4);
 }
 
-/* Gallery */
+/* --- 6. Sections & Kasavu Texture --- */
+.section {
+    padding: 100px 10%;
+    position: relative;
+}
+
+.section-alt {
+    background-color: var(--soft-sand);
+    /* Subtle Kasavu Pattern (Gold Dots) */
+    background-image: radial-gradient(var(--kerala-gold) 0.5px, transparent 0.5px);
+    background-size: 25px 25px;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: var(--kerala-green);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Decorative leaf divider under titles */
+.section h2::after {
+    content: '🌿'; 
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+/* --- 7. Glassmorphism Cards --- */
+.member-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 24px;
+    margin: 20px auto;
+    max-width: 800px;
+    
+    /* Soft Shadow & Border */
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.5);
+    
+    /* The "Kasavu" Gradient Border Left */
+    border-left: 6px solid transparent;
+    background-image: linear-gradient(white, white), 
+                      linear-gradient(to bottom, var(--kerala-green), var(--kerala-gold));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    
+    transition: transform 0.4s var(--ease-out);
+}
+
+.member-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 50px -15px rgba(0,0,0,0.12);
+}
+
+/* --- 8. Gallery Grid (Masonry Feel) --- */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .gallery-grid img {
     width: 100%;
-    border-radius: 12px;
-    border: 4px solid var(--soft-border);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: 0.3s;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    filter: grayscale(30%) contrast(90%);
+    transition: 0.5s var(--ease-out);
+    cursor: pointer;
 }
 
 .gallery-grid img:hover {
-    transform: scale(1.05);
-    border-color: var(--kerala-gold);
+    filter: grayscale(0%) contrast(105%);
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
-/* Member Cards */
-.member-card {
-    background: white;
-    padding: 26px;
-    margin: 18px auto;
-    max-width: 600px;
-    border-radius: 12px;
-    border-left: 8px solid var(--kerala-green);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: left;
-    transition: 0.3s;
-}
-
-.member-card:hover {
-    transform: translateY(-4px);
-    border-left-color: var(--kerala-gold);
-}
-
-/* Footer */
+/* --- 9. Footer --- */
 footer {
-    background: var(--kerala-green);
-    color: white;
+    background: var(--kerala-green-dark);
+    color: rgba(255,255,255,0.7);
     text-align: center;
-    padding: 16px;
-    font-size: 0.95rem;
-    border-top: 5px solid var(--kerala-gold);
+    padding: 40px 20px;
+    border-top: 4px solid var(--kerala-gold);
 }
 
-/* Mobile */
-@media (max-width: 600px) {
+/* --- 10. Animations --- */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 11. Mobile Responsiveness --- */
+@media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
-        gap: 10px;
+        padding: 1rem;
+    }
+    
+    .hero {
+        height: 70vh;
+        background-attachment: scroll; /* Disable parallax on mobile for performance */
+        clip-path: ellipse(200% 100% at 50% 0%);
     }
 
-    .hero h1 {
-        font-size: 2.2rem;
+    .section {
+        padding: 60px 5%;
+    }
+
+    /* Mobile Menu (Simple Stack) */
+    .nav-links {
+        display: none; /* Hidden by default on mobile, use JS to toggle */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: var(--kerala-green);
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        gap: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    /* Class to add via JS for opening menu */
+    .nav-links.active {
+        display: flex;
     }
 }
