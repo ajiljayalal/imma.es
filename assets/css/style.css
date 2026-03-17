@@ -72,20 +72,17 @@ body {
 /* --- 4. HERO SECTION --- */
 .hero {
     height: 70vh;
-    background:
-        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-        url('assets/images/kerala.jpg');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('../images/kerala.jpg'); /* Added ../ here */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
-
     clip-path: ellipse(150% 100% at 50% 0%);
 }
 
@@ -108,18 +105,22 @@ body {
     text-align: center;
 }
 
+/* The Unified Card Style (Green & Gold) */
 .section-alt {
     background: linear-gradient(135deg, var(--kerala-green) 0%, var(--kerala-green-dark) 100%);
     color: white;
     border-radius: 40px;
     margin: 40px 5%;
+    padding: 80px 10%; /* Increased padding for a more spacious feel */
     box-shadow: var(--shadow);
+    border: 1px solid rgba(212, 160, 23, 0.2); /* Subtle Gold border */
 }
 
 .section-alt h2 { 
     color: var(--kerala-gold) !important; 
 }
 
+/* Default Section Titles */
 .section h2 {
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
@@ -136,6 +137,7 @@ body {
     border-radius: 2px;
 }
 
+/* Standard Button (For Ivory backgrounds) */
 .btn {
     display: inline-block;
     padding: 14px 40px;
@@ -152,7 +154,20 @@ body {
 
 .btn:hover {
     background: var(--kerala-gold);
+    color: white;
     transform: translateY(-3px);
+}
+
+/* SPECIAL: Button style for inside the Green Cards */
+.section-alt .btn {
+    background: white;
+    color: var(--kerala-green);
+    border: 2px solid var(--kerala-gold);
+}
+
+.section-alt .btn:hover {
+    background: var(--kerala-gold);
+    color: white;
 }
 
 /* --- 6. KERALA HIGHLIGHT CARDS --- */
