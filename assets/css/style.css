@@ -6,8 +6,8 @@
 }
 
 body {
-    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #fffdf7; /* soft Kerala off‑white */
+    font-family: "Poppins", sans-serif;
+    background: #fffdf7;
     color: #2b2b2b;
     line-height: 1.6;
 }
@@ -24,60 +24,71 @@ body {
 /* Navbar */
 .navbar {
     background: var(--kerala-green);
-    padding: 14px 24px;
+    padding: 16px 24px;
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 4px solid var(--kerala-gold); /* kasavu border */
+    border-bottom: 5px solid var(--kerala-gold);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
 .logo {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     letter-spacing: 0.5px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 18px;
+    gap: 20px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
+    transition: 0.3s;
 }
 
 .nav-links a:hover {
     color: var(--kerala-gold);
+    transform: scale(1.05);
 }
 
 /* Hero Section */
 .hero {
     background: linear-gradient(
-        rgba(0, 0, 0, 0.45),
-        rgba(0, 0, 0, 0.45)
+        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0.55)
     ),
-    url('../images/kerala.jpg') center/cover no-repeat;
-    padding: 120px 20px;
+    url('../images/kerala-backwaters.jpg') center/cover no-repeat;
+    padding: 140px 20px;
     text-align: center;
     color: white;
-    border-bottom: 6px solid var(--kerala-gold);
+    border-bottom: 8px solid var(--kerala-gold);
 }
 
 .hero h1 {
-    font-size: 2.4rem;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.5);
 }
 
 .hero p {
-    font-size: 1.1rem;
-    max-width: 700px;
+    font-size: 1.2rem;
+    max-width: 750px;
     margin: 0 auto;
+}
+
+/* Decorative Kerala Divider */
+.kerala-divider {
+    width: 100%;
+    height: 40px;
+    background: url('../images/coconut-leaf-divider.png') center/contain no-repeat;
+    margin: 20px 0;
 }
 
 /* Sections */
@@ -93,21 +104,21 @@ body {
 }
 
 .section h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--kerala-green);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .section p {
     max-width: 750px;
     margin: 0 auto 20px;
-    font-size: 1rem;
+    font-size: 1.05rem;
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 12px 28px;
     background: var(--kerala-green);
     color: white;
     border-radius: 6px;
@@ -121,71 +132,46 @@ body {
 .btn:hover {
     background: var(--kerala-gold);
     color: #2b2b2b;
+    transform: translateY(-3px);
 }
 
 /* Gallery */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
     margin-top: 30px;
 }
 
 .gallery-grid img {
     width: 100%;
-    border-radius: 10px;
-    border: 3px solid var(--soft-border);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    border: 4px solid var(--soft-border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: 0.3s;
 }
 
 .gallery-grid img:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
     border-color: var(--kerala-gold);
 }
 
 /* Member Cards */
 .member-card {
     background: white;
-    padding: 24px;
-    margin: 15px auto;
-    max-width: 550px;
-    border-radius: 10px;
-    border-left: 6px solid var(--kerala-green);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    padding: 26px;
+    margin: 18px auto;
+    max-width: 600px;
+    border-radius: 12px;
+    border-left: 8px solid var(--kerala-green);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: left;
+    transition: 0.3s;
 }
 
-/* Forms */
-.form {
-    max-width: 550px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.form label {
-    display: block;
-    margin-top: 14px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--kerala-green);
-}
-
-.form input,
-.form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border-radius: 6px;
-    border: 1px solid var(--soft-border);
-    font-size: 1rem;
-    background: #fffdf7;
-}
-
-.form input:focus,
-.form textarea:focus {
-    border-color: var(--kerala-green);
-    outline: none;
+.member-card:hover {
+    transform: translateY(-4px);
+    border-left-color: var(--kerala-gold);
 }
 
 /* Footer */
@@ -193,20 +179,19 @@ footer {
     background: var(--kerala-green);
     color: white;
     text-align: center;
-    padding: 14px;
-    font-size: 0.9rem;
-    border-top: 4px solid var(--kerala-gold);
+    padding: 16px;
+    font-size: 0.95rem;
+    border-top: 5px solid var(--kerala-gold);
 }
 
 /* Mobile */
 @media (max-width: 600px) {
     .navbar {
         flex-direction: column;
-        align-items: flex-start;
         gap: 10px;
     }
 
     .hero h1 {
-        font-size: 1.9rem;
+        font-size: 2.2rem;
     }
 }
