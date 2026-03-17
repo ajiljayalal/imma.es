@@ -64,7 +64,7 @@ body {
         rgba(0, 0, 0, 0.55),
         rgba(0, 0, 0, 0.55)
     ),
-    url('assets/images/Kerala_Backwaters.jpg') center/cover no-repeat;
+    url('../images/Kerala_Backwaters.jpg') center/cover no-repeat;
     padding: 140px 20px;
     text-align: center;
     color: white;
