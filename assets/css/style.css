@@ -74,12 +74,18 @@ body {
     height: 70vh;
     background:
         linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-        url('assets/images/kerala.jpg') center/cover no-repeat fixed;
+        url('assets/images/kerala.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
+
     clip-path: ellipse(150% 100% at 50% 0%);
 }
 
