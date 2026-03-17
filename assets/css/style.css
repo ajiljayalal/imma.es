@@ -1,9 +1,9 @@
 /* --- 1. CORE THEME & VARIABLES --- */
 :root {
-    --kerala-green: #0b6e4f;      /* Deep tropical green */
+    --kerala-green: #0b6e4f;
     --kerala-green-dark: #074a35;
-    --kerala-gold: #d4a017;       /* Traditional Kasavu gold */
-    --ivory-bg: #fffdf7;          /* Kerala Saree off-white */
+    --kerala-gold: #d4a017;
+    --ivory-bg: #fffdf7;
     --text-dark: #1a1a1a;
     --glass-bg: rgba(255, 255, 255, 0.9);
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -23,6 +23,7 @@ body {
     color: var(--text-dark);
     line-height: 1.8;
     overflow-x: hidden;
+
     /* Subtle Kasavu Texture */
     background-image: radial-gradient(var(--kerala-gold) 0.5px, transparent 0.5px);
     background-size: 30px 30px;
@@ -71,9 +72,9 @@ body {
 /* --- 4. HERO SECTION --- */
 .hero {
     height: 70vh;
-    /* Ensure your image filename matches exactly (case-sensitive) */
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                img src ('../images/kerala.jpg') center/cover no-repeat fixed;
+    background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('assets/images/kerala.jpg') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,7 +110,9 @@ body {
     box-shadow: var(--shadow);
 }
 
-.section-alt h2 { color: var(--kerala-gold) !important; }
+.section-alt h2 { 
+    color: var(--kerala-gold) !important; 
+}
 
 .section h2 {
     font-size: 2.2rem;
@@ -146,7 +149,7 @@ body {
     transform: translateY(-3px);
 }
 
-/* --- 6. KERALA HIGHLIGHT CARDS (Kathakali/Onam/Waterfalls) --- */
+/* --- 6. KERALA HIGHLIGHT CARDS --- */
 .feature-card-large {
     display: flex;
     align-items: center;
@@ -160,7 +163,9 @@ body {
     color: var(--text-dark);
 }
 
-.feature-card-large.reverse { flex-direction: row-reverse; }
+.feature-card-large.reverse { 
+    flex-direction: row-reverse; 
+}
 
 .card-img-container {
     flex: 1;
@@ -176,7 +181,9 @@ body {
     transition: 0.6s ease;
 }
 
-.feature-card-large:hover img { transform: scale(1.08); }
+.feature-card-large:hover img { 
+    transform: scale(1.08); 
+}
 
 .card-text {
     flex: 1.2;
@@ -200,11 +207,13 @@ body {
 
 .slide-track {
     display: flex;
-    width: calc(250px * 10); /* Total slide width */
+    width: calc(250px * 10);
     animation: scroll 30s linear infinite;
 }
 
-.slide-track:hover { animation-play-state: paused; }
+.slide-track:hover { 
+    animation-play-state: paused; 
+}
 
 .slide {
     width: 250px;
@@ -223,7 +232,7 @@ body {
 
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-250px * 5)); } /* half the track */
+    100% { transform: translateX(calc(-250px * 5)); }
 }
 
 /* --- 8. FOOTER --- */
@@ -240,10 +249,15 @@ footer {
     .navbar { flex-direction: column; gap: 15px; }
     .nav-links { gap: 12px; flex-wrap: wrap; justify-content: center; }
     .hero { height: 60vh; background-attachment: scroll; }
-    .feature-card-large, .feature-card-large.reverse { flex-direction: column; text-align: center; }
+    .feature-card-large, 
+    .feature-card-large.reverse { 
+        flex-direction: column; 
+        text-align: center; 
+    }
     .card-text { padding: 30px; }
     .card-img-container { width: 100%; height: 300px; }
     .slide { width: 180px; }
+
     @keyframes scroll {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-180px * 5)); }
