@@ -34,7 +34,7 @@ body {
     top: 0;
     z-index: 1000;
     background: var(--kerala-green);
-    padding: 0.8rem 5%; /* reduced */
+    padding: 0.8rem 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,13 +92,13 @@ body {
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-right: auto; /* keeps it on the left */
+    margin-right: auto;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px; /* reduced */
+    gap: 20px;
 }
 
 .nav-links a {
@@ -109,13 +109,16 @@ body {
     transition: var(--transition);
 }
 
+/* --- ✨ HOVER ANIMATION OPTION 2 (Glow + Lift) --- */
 .nav-links a:hover {
     color: var(--kerala-gold);
+    transform: translateY(-3px);
+    text-shadow: 0 0 8px rgba(212, 160, 23, 0.6);
 }
 
 /* --- 4. HERO SECTION --- */
 .hero {
-    height: 70vh; /* reduced from 70vh */
+    height: 70vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                 url('../images/kerala.jpg');
     background-position: bottom;
@@ -141,7 +144,7 @@ body {
 
 /* --- 5. SECTIONS --- */
 .section {
-    padding: 40px 8%; /* reduced from 80px */
+    padding: 40px 8%;
     text-align: center;
 }
 
@@ -149,8 +152,8 @@ body {
     background: linear-gradient(135deg, var(--kerala-green), var(--kerala-green-dark));
     color: white;
     border-radius: 30px;
-    margin: 25px 5%; /* reduced */
-    padding: 45px 8%; /* reduced from 80px */
+    margin: 25px 5%;
+    padding: 45px 8%;
     box-shadow: var(--shadow);
     border: 1px solid rgba(212, 160, 23, 0.2);
 }
@@ -178,7 +181,7 @@ body {
 /* --- BUTTONS --- */
 .btn {
     display: inline-block;
-    padding: 12px 32px; /* reduced */
+    padding: 12px 32px;
     background: var(--kerala-green);
     color: white;
     text-decoration: none;
@@ -213,7 +216,7 @@ body {
     border-radius: 30px;
     overflow: hidden;
     max-width: 1100px;
-    margin: 30px auto; /* reduced */
+    margin: 30px auto;
     box-shadow: var(--shadow);
     text-align: left;
 }
@@ -224,7 +227,7 @@ body {
 
 .card-img-container {
     flex: 1;
-    height: 380px; /* reduced */
+    height: 380px;
     overflow: hidden;
 }
 
@@ -241,12 +244,12 @@ body {
 
 .card-text {
     flex: 1.2;
-    padding: 40px; /* reduced */
+    padding: 40px;
 }
 
 /* --- 7. SLIDER --- */
 .slider-section {
-    padding: 40px 0; /* reduced from 80px */
+    padding: 40px 0;
     background: white;
     overflow: hidden;
     text-align: center;
@@ -265,8 +268,8 @@ body {
 }
 
 .slide {
-    width: 220px; /* reduced */
-    height: 150px; /* reduced */
+    width: 220px;
+    height: 150px;
     padding: 10px;
 }
 
@@ -289,12 +292,11 @@ footer {
     background: #111;
     color: #888;
     text-align: center;
-    padding: 30px 20px; /* reduced from 60px */
+    padding: 30px 20px;
     border-top: 6px solid var(--kerala-green);
 }
 
 /* --- MEMBERS PAGE --- */
-
 .members-section {
     padding: 40px 8%;
     text-align: center;
@@ -346,7 +348,6 @@ footer {
     margin-top: 5px;
 }
 
-
 /* --- 9. RESPONSIVE --- */
 @media (max-width: 768px) {
     .navbar { 
@@ -372,7 +373,7 @@ footer {
     .hero { 
         height: 45vh; 
         background-attachment: scroll; 
-        clip-path: none; /* FIX extra white space */
+        clip-path: none;
     }
 
     .feature-card-large,
@@ -391,4 +392,3 @@ footer {
         100% { transform: translateX(calc(-160px * 5)); }
     }
 }
-
