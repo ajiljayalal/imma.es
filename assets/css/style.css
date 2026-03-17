@@ -249,6 +249,60 @@ footer {
     border-top: 6px solid var(--kerala-green);
 }
 
+/* --- MEMBERS PAGE --- */
+
+.members-section {
+    padding: 40px 8%;
+    text-align: center;
+}
+
+.members-section h2 {
+    font-size: 2.2rem;
+    color: var(--kerala-green);
+    margin-bottom: 30px;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.member-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+}
+
+.member-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid var(--kerala-gold);
+}
+
+.member-card h3 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: var(--kerala-green-dark);
+}
+
+.member-card .position {
+    font-size: 0.9rem;
+    color: var(--kerala-gold);
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+
 /* --- 9. RESPONSIVE --- */
 @media (max-width: 768px) {
     .navbar { flex-direction: column; gap: 10px; }
