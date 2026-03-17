@@ -1,18 +1,51 @@
-<main class="container">
-    <h1>Membership Registration</h1>
-    <form action="https://formspree.io" method="POST" class="form-card">
-        <label>Full Name</label>
-        <input type="text" name="name" required>
-        
-        <label>Email Address</label>
-        <input type="email" name="email" required>
-        
-        <label>WhatsApp Number</label>
-        <input type="tel" name="phone">
-        
-        <label>Address in Madrid</label>
-        <textarea name="address"></textarea>
-        
-        <button type="submit" class="cta-btn">Submit Application</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership - Madrid Malayali Association</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Membership</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="es/index.html">ES 🇪🇸</a></li>
+    </ul>
+</nav>
+
+<section class="section">
+    <h2>Join the Madrid Malayali Association</h2>
+    <p>Fill in the form below to become a member.</p>
+
+    <!-- Option 1: Embedded Google Form -->
+    <!-- Replace the src with your real Google Form link -->
+    <iframe 
+        src="YOUR_GOOGLE_FORM_EMBED_LINK_HERE"
+        width="100%" height="600" style="border:none;">
+    </iframe>
+
+    <!-- Option 2: Simple HTML form (no backend email yet) -->
+    <!--
+    <form class="form">
+        <label>Name</label>
+        <input type="text" required>
+
+        <label>Email</label>
+        <input type="email" required>
+
+        <label>Phone</label>
+        <input type="tel">
+
+        <label>City/Area in Madrid</label>
+        <input type="text">
+
+        <button type="submit" class="btn">Submit</button>
     </form>
-</main>
+    -->
+</section>
+
+</body>
+</html>
