@@ -1,76 +1,81 @@
 /**
  * Madrid Malayali Association - Main Script
- * Handles: Multilingual Support & Mobile Navigation
+ * Handles: Multilingual Toggle & Mobile Navigation
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. LANGUAGE SWITCHER LOGIC ---
-    // Finds the link in your navbar that contains "ES" or "EN"
+    // --- 1. LANGUAGE SELECTOR LOGIC ---
+    
+    // We find the link in your navbar that says "ES 🇪🇸" or "EN 🇬🇧"
     const langBtn = Array.from(document.querySelectorAll('.nav-links a'))
                          .find(el => el.textContent.includes('ES') || el.textContent.includes('EN'));
 
-    // Set initial state to English (Default)
-    let isSpanish = false; 
+    let currentLang = 'en'; // Page starts in English (Default)
 
+    /**
+     * Function: updateTextContent
+     * Swaps the text of every element that has a [data-en] attribute.
+     * We use .textContent to ensure we don't break your CSS classes or layout.
+     */
+    const updateTextContent = (lang) => {
+        document.querySelectorAll('[data-en]').forEach(el => {
+            const newText = el.getAttribute(`data-${lang}`);
+            if (newText) {
+                el.textContent = newText;
+            }
+        });
+    };
+
+    // --- CRITICAL: FORCE ENGLISH ON LOAD ---
+    // This ensures the "Long English" version from data-en appears 
+    // immediately as soon as the page finishes loading.
+    updateTextContent('en');
+
+    // --- LANGUAGE TOGGLE EVENT ---
     if (langBtn) {
         langBtn.addEventListener('click', (e) => {
-            // Prevent the browser from actually navigating to es/index.html
-            e.preventDefault(); 
+            e.preventDefault(); // Stop it from trying to open a new page
             
-            // Toggle the state
-            isSpanish = !isSpanish;
-
-            // Update all elements with [data-en] attributes
-            document.querySelectorAll('[data-en]').forEach(el => {
-                const enText = el.getAttribute('data-en');
-                const esText = el.getAttribute('data-es');
-                
-                // Swap the text content based on current state
-                el.textContent = isSpanish ? esText : enText;
-            });
-
-            // Update the button label in the navbar
-            langBtn.innerHTML = isSpanish ? 'EN 🇬🇧' : 'ES 🇪🇸';
-
-            // Update the HTML lang attribute for accessibility
-            document.documentElement.lang = isSpanish ? 'es' : 'en';
+            // Toggle between 'en' and 'es'
+            currentLang = currentLang === 'en' ? 'es' : 'en';
             
-            // Log for debugging
-            console.log(`Language switched to: ${isSpanish ? 'Spanish' : 'English'}`);
+            // Update the website text
+            updateTextContent(currentLang);
+
+            // Update the Button Label in the Navbar
+            langBtn.innerHTML = currentLang === 'en' ? 'ES 🇪🇸' : 'EN 🇬🇧';
+
+            // Update the HTML lang attribute for screen readers
+            document.documentElement.lang = currentLang;
+            
+            console.log(`Language successfully changed to: ${currentLang.toUpperCase()}`);
         });
     }
 
     // --- 2. MOBILE MENU TOGGLE ---
-    const navbar = document.querySelector('.navbar');
+    
+    // This assumes you have a <div id="mobile-menu"> in your HTML navbar
+    const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-    
-    // Create a mobile menu button if it doesn't exist in HTML
-    let menuBtn = document.getElementById('mobile-menu');
-    
-    if (!menuBtn) {
-        menuBtn = document.createElement('div');
-        menuBtn.id = 'mobile-menu';
-        menuBtn.innerHTML = '<span></span><span></span><span></span>';
-        navbar.prepend(menuBtn); // Add it to the start of the navbar
+
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            // Toggle the 'active' class on your nav links
+            navLinks.classList.toggle('active');
+            
+            // Optional: Animate the hamburger bars
+            mobileMenu.classList.toggle('is-active');
+        });
     }
 
-    menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuBtn.classList.toggle('is-active');
-        
-        // Inline style fallback for immediate testing
-        if (navLinks.classList.contains('active')) {
-            navLinks.style.display = 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.background = '#0b6e4f';
-            navLinks.style.padding = '20px';
-        } else {
-            navLinks.style.display = ''; // Resets to CSS default
-        }
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
     });
+
 });
