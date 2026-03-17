@@ -67,7 +67,7 @@ body {
 .hero {
     height: 70vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('..assets/images/kerala.jpg') center/cover no-repeat fixed;
+                url('assets/images/Kerala_Backwaters.jpg') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
