@@ -42,6 +42,50 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
+/* --- NAVBAR HOVER POPUP TOOLTIP --- */
+.nav-links a {
+    position: relative;
+}
+
+/* Hidden popup */
+.nav-links a::after {
+    content: attr(data-popup);
+    position: absolute;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--kerala-gold);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Small arrow */
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--kerala-gold) transparent transparent transparent;
+    opacity: 0;
+    transition: 0.25s ease;
+}
+
+/* Show popup on hover */
+.nav-links a:hover::after,
+.nav-links a:hover::before {
+    opacity: 1;
+}
+
 .logo {
     color: white;
     font-weight: 700;
