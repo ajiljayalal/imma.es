@@ -131,7 +131,7 @@ h1, h2, h3 {
         rgba(11, 60, 40, 0.5),
         rgba(11, 60, 40, 0.7)
     ),
-    url('https://images.unsplash.com') center/cover no-repeat fixed;
+    url('../images/kerala_backwaters.jpg') center/cover no-repeat fixed;
     
     /* Organic Curve at Bottom */
     clip-path: ellipse(160% 100% at 50% 0%);
