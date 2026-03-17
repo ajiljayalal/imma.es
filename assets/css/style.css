@@ -71,10 +71,10 @@ body {
 
 /* --- 4. HERO SECTION --- */
 .hero {
-    height: 50vh; /* reduced from 70vh */
+    height: 70vh; /* reduced from 70vh */
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                 url('../images/kerala.jpg');
-    background-position: bottom;
+    background-position: bottom center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
