@@ -297,10 +297,11 @@ body {
 
 /* --- 11. HIGH-PERFORMANCE GALLERY --- */
 .gallery-section {
-    padding: 60px 20px;
+    padding: 20px 5%;      /* REDUCED TOP PADDING: Fixes the big white space */
     text-align: center;
     background: var(--ivory-bg);
 }
+
 
 .gallery-header {
     text-align: center;
@@ -348,20 +349,18 @@ body {
 
 .gallery-info {
     padding: 25px;
-    text-align: left;
+    text-align: center;
 }
 
 .gallery-info h3 {
     color: var(--kerala-green-dark);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-size: 1.25rem;
 }
-
-.gallery-info p {
+.gallery-section p {
+    margin-bottom: 25px;   /* Tightens the space above the cards */
     font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 20px;
-    line-height: 1.5;
+    opacity: 0.8;
 }
 
 /* Button matches your "Clean" style */
