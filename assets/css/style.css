@@ -45,7 +45,7 @@ body {
     justify-content: space-between; /* Pushes brand left, hamburger right */
     align-items: center;
     width: 100%;
-    padding: 0 5%;
+    padding: 0 3%;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -55,7 +55,7 @@ body {
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-shrink: 1; /* Allows it to fit on smaller screens */
 }
 
