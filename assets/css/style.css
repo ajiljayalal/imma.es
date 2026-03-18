@@ -83,7 +83,7 @@ body {
 .hamburger span {
     width: 28px;
     height: 3px;
-    background: var(--kerala-gold);
+    background: #ffffff; 
     border-radius: 2px;
     transition: var(--transition);
 }
