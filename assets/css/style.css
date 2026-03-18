@@ -380,6 +380,106 @@ body {
     background: var(--kerala-gold);
     color: white;
 }
+/* --- 11. SQUARE GALLERY TILES --- */
+.gallery-section {
+    padding: 60px 5%;
+    background: var(--ivory-bg);
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    /* 2 columns on mobile, 4 on desktop */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.event-card {
+    text-decoration: none; /* Removes link underline */
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: var(--transition);
+    border: 1px solid rgba(212, 160, 23, 0.1);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--kerala-gold);
+}
+
+/* THE SQUARE FIX */
+.event-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Forces a perfect square */
+    position: relative;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops image to fill the square */
+    transition: transform 0.5s ease;
+}
+
+/* Hover Overlay */
+.event-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 110, 79, 0.7); /* Kerala Green Transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.event-card:hover .event-overlay {
+    opacity: 1;
+}
+
+.event-card:hover img {
+    transform: scale(1.1);
+}
+
+.view-text {
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid white;
+    padding: 5px 15px;
+    border-radius: 50px;
+}
+
+.event-details {
+    padding: 15px 10px;
+    text-align: center;
+}
+
+.event-details h3 {
+    color: var(--kerala-green-dark);
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.event-date {
+    color: var(--kerala-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
 
 /* --- MOBILE TWEAK --- */
 @media (max-width: 480px) {
@@ -412,4 +512,7 @@ footer {
         height: 100px;
     }
     .member-card h3 { font-size: 0.95rem; }
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Squares per row on phones */
+        gap: 15px;}
 }
