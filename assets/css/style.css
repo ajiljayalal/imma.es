@@ -49,30 +49,31 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
+    flex-wrap: nowrap; /* Prevents wrapping to a second line */
 }
 
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+    flex-shrink: 1; /* Allows it to fit on smaller screens */
 }
 
 .nav-logo {
-    height: 55px;
-    width: 55px;
-    object-fit: contain; /* Handles 640x640 logo perfectly */
-    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    flex-shrink: 0; /* Prevents the logo from getting squashed */
 }
 
 .logo-text {
     color: var(--white);
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: clamp(0.7rem, 2.5vw, 1rem); /* Fluid font size for mobile */
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    line-height: 1.2;
+    white-space: nowrap; /* Forces text into one single line */
 }
-
 /* --- THE TOGGLE HACK --- */
 #menu-toggle {
     display: none !important; /* Hides the white square checkbox */
@@ -220,7 +221,7 @@ footer {
 
 /* --- 9. MOBILE SPECIFIC OVERRIDES --- */
 @media (max-width: 768px) {
-    .logo-text { font-size: 0.8rem; }
+    .logo-text { font-size: 0.65rem; }
     .hero { height: 50vh; background-attachment: scroll; clip-path: none; }
     .section { padding: 40px 5%; }
     .nav-logo { height: 45px; width: 45px; }
