@@ -23,18 +23,17 @@ body {
     color: var(--text-dark);
     line-height: 1.7;
     overflow-x: hidden;
-
     background-image: radial-gradient(var(--kerala-gold) 0.5px, transparent 0.5px);
     background-size: 30px 30px;
 }
 
-/* --- 3. NAVBAR --- */
+/* --- 3. NAVBAR & HAMBURGER LOGIC --- */
 .navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
     background: var(--kerala-green);
-    padding: 0.8rem 5%;
+    padding: 0.6rem 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,12 +41,74 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* --- NAVBAR HOVER POPUP TOOLTIP --- */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo {
+    height: 50px;
+    width: auto;
+    border-radius: 5px;
+    border: 1px solid var(--kerala-gold);
+}
+
+.logo {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Hidden Checkbox for Toggle */
+#menu-toggle {
+    display: none;
+}
+
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--kerala-gold);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
 .nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
     position: relative;
 }
 
-/* Hidden popup */
+.nav-links a:hover {
+    color: var(--kerala-gold);
+    transform: translateY(-3px);
+    text-shadow: 0 0 8px rgba(212, 160, 23, 0.6);
+}
+
+/* Tooltip Popups (Original Feature) */
 .nav-links a::after {
     content: attr(data-popup);
     position: absolute;
@@ -63,60 +124,16 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: 0.25s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Small arrow */
-.nav-links a::before {
-    content: "";
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: var(--kerala-gold) transparent transparent transparent;
-    opacity: 0;
-    transition: 0.25s ease;
-}
-
-}
-
-.logo {
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-right: auto;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    color: rgba(255,255,255,0.9);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-/* --- ✨ HOVER ANIMATION OPTION 2 (Glow + Lift) --- */
-.nav-links a:hover {
-    color: var(--kerala-gold);
-    transform: translateY(-3px);
-    text-shadow: 0 0 8px rgba(212, 160, 23, 0.6);
+.nav-links a:hover::after {
+    opacity: 1;
 }
 
 /* --- 4. HERO SECTION --- */
 .hero {
     height: 70vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('../images/kerala.jpg');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/kerala.jpg');
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
@@ -129,20 +146,10 @@ body {
     clip-path: ellipse(150% 100% at 50% 0%);
 }
 
-.hero-overlay {
-    padding: 15px;
-}
-
-.hero h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: 0.8rem;
-}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.8rem; }
 
 /* --- 5. SECTIONS --- */
-.section {
-    padding: 40px 8%;
-    text-align: center;
-}
+.section { padding: 40px 8%; text-align: center; }
 
 .section-alt {
     background: linear-gradient(135deg, var(--kerala-green), var(--kerala-green-dark));
@@ -151,18 +158,10 @@ body {
     margin: 25px 5%;
     padding: 45px 8%;
     box-shadow: var(--shadow);
-    border: 1px solid rgba(212, 160, 23, 0.2);
 }
 
-.section-alt h2 {
-    color: var(--kerala-gold) !important;
-}
-
-.section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--kerala-green);
-}
+.section-alt h2 { color: var(--kerala-gold) !important; }
+.section h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--kerala-green); }
 
 .section h2::after {
     content: '';
@@ -174,7 +173,7 @@ body {
     border-radius: 2px;
 }
 
-/* --- BUTTONS --- */
+/* --- 6. BUTTONS --- */
 .btn {
     display: inline-block;
     padding: 12px 32px;
@@ -188,95 +187,13 @@ body {
     margin-top: 15px;
 }
 
-.btn:hover {
-    background: var(--kerala-gold);
-    color: white;
-    transform: translateY(-3px);
-}
-
-.section-alt .btn {
-    background: white;
-    color: var(--kerala-green);
-}
-
-.section-alt .btn:hover {
-    background: var(--kerala-gold);
-    color: white;
-}
-
-/* --- 6. FEATURE CARDS --- */
-.feature-card-large {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 30px;
-    overflow: hidden;
-    max-width: 1100px;
-    margin: 30px auto;
-    box-shadow: var(--shadow);
-    text-align: left;
-}
-
-.feature-card-large.reverse {
-    flex-direction: row-reverse;
-}
-
-.card-img-container {
-    flex: 1;
-    height: 380px;
-    overflow: hidden;
-}
-
-.card-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.6s ease;
-}
-
-.feature-card-large:hover img {
-    transform: scale(1.08);
-}
-
-.card-text {
-    flex: 1.2;
-    padding: 40px;
-}
+.btn:hover { background: var(--kerala-gold); transform: translateY(-3px); }
 
 /* --- 7. SLIDER --- */
-.slider-section {
-    padding: 40px 0;
-    background: white;
-    overflow: hidden;
-    text-align: center;
-}
-
-.slider {
-    margin-top: 25px;
-    width: 100%;
-    display: flex;
-}
-
-.slide-track {
-    display: flex;
-    width: calc(220px * 10);
-    animation: scroll 30s linear infinite;
-}
-
-.slide {
-    width: 220px;
-    height: 150px;
-    padding: 10px;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 3px solid var(--kerala-gold);
-    box-shadow: var(--shadow);
-}
+.slider-section { padding: 40px 0; background: white; overflow: hidden; text-align: center; }
+.slide-track { display: flex; width: calc(220px * 10); animation: scroll 30s linear infinite; }
+.slide { width: 220px; height: 150px; padding: 10px; }
+.slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; border: 3px solid var(--kerala-gold); }
 
 @keyframes scroll {
     0% { transform: translateX(0); }
@@ -292,99 +209,36 @@ footer {
     border-top: 6px solid var(--kerala-green);
 }
 
-/* --- MEMBERS PAGE --- */
-.members-section {
-    padding: 40px 8%;
-    text-align: center;
-}
-
-.members-section h2 {
-    font-size: 2.2rem;
-    color: var(--kerala-green);
-    margin-bottom: 30px;
-}
-
-.members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.member-card {
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.member-card:hover {
-    transform: translateY(-5px);
-}
-
-.member-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 15px;
-    border: 3px solid var(--kerala-gold);
-}
-
-.member-card h3 {
-    margin-top: 15px;
-    font-size: 1.2rem;
-    color: var(--kerala-green-dark);
-}
-
-.member-card .position {
-    font-size: 0.9rem;
-    color: var(--kerala-gold);
-    font-weight: 600;
-    margin-top: 5px;
-}
-
-/* --- 9. RESPONSIVE --- */
+/* --- 9. RESPONSIVE & MOBILE TOGGLE --- */
 @media (max-width: 768px) {
-    .navbar { 
-        flex-direction: column; 
-        gap: 10px; 
-        padding: 0.6rem 5%;
-    }
+    .hamburger { display: flex; } /* Show hamburger on mobile */
 
-    .logo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-right: 0;
-    }
-
-    .nav-links { 
-        gap: 10px; 
-        flex-wrap: wrap; 
-        justify-content: center; 
-    }
-
-    .hero { 
-        height: 45vh; 
-        background-attachment: scroll; 
-        clip-path: none;
-    }
-
-    .feature-card-large,
-    .feature-card-large.reverse {
+    .nav-links {
+        display: none; /* Hide menu by default */
         flex-direction: column;
-        text-align: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--kerala-green-dark);
+        padding: 20px 0;
+        border-bottom: 4px solid var(--kerala-gold);
+        gap: 0;
     }
 
-    .card-text { padding: 25px; }
-    .card-img-container { height: 250px; }
+    .nav-links li { width: 100%; text-align: center; }
+    .nav-links li a { padding: 15px; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-    .slide { width: 160px; height: 120px; }
-
-    @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-160px * 5)); }
+    /* Open Menu Action */
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
     }
+
+    /* Animate Hamburger to X */
+    #menu-toggle:checked ~ .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked ~ .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .hero { height: 50vh; clip-path: none; background-attachment: scroll; }
+    .section { padding: 30px 5%; }
 }
