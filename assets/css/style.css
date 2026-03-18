@@ -6,7 +6,7 @@
     --ivory-bg: #fffdf7;
     --text-dark: #1a1a1a;
     --white: #ffffff;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -23,6 +23,7 @@ body {
     color: var(--text-dark);
     line-height: 1.7;
     overflow-x: hidden;
+    /* Traditional Kerala pattern background */
     background-image: radial-gradient(var(--kerala-gold) 0.5px, transparent 0.5px);
     background-size: 30px 30px;
 }
@@ -41,44 +42,44 @@ body {
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes brand left, hamburger right */
     align-items: center;
     width: 100%;
     padding: 0 5%;
     max-width: 1400px;
     margin: 0 auto;
+    position: relative;
 }
 
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 15px; /* Spacing between logo and title */
+    gap: 15px;
 }
 
 .nav-logo {
-    height: 60px;
-    width: 60px;
-    object-fit: contain;
+    height: 55px;
+    width: 55px;
+    object-fit: contain; /* Handles 640x640 logo perfectly */
     border-radius: 5px;
 }
 
 .logo-text {
     color: var(--white);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    max-width: 300px;
+    line-height: 1.2;
 }
 
-/* Hidden Checkbox for Toggle */
+/* --- THE TOGGLE HACK --- */
 #menu-toggle {
-    display: none !important;
+    display: none !important; /* Hides the white square checkbox */
 }
 
-/* Hamburger Icon (Always Visible) */
 .hamburger-icon {
-    display: flex; 
+    display: flex; /* Always visible on Desktop & Mobile */
     flex-direction: column;
     gap: 6px;
     cursor: pointer;
@@ -88,32 +89,31 @@ body {
 .bar {
     width: 30px;
     height: 3px;
-    background: var(--white); /* White bars */
+    background: var(--white); /* WHITE BARS */
     border-radius: 2px;
     transition: var(--transition);
 }
 
-/* --- 4. THE HIDDEN MENU --- */
+/* --- 4. THE HIDDEN MENU (Vertical List) --- */
 .nav-links {
     display: none; /* Hidden by default */
     flex-direction: column;
     position: absolute;
-    top: 80px; 
+    top: 80px; /* Sits right below the navbar */
     left: 0;
     width: 100%;
     background: var(--kerala-green-dark);
     list-style: none;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: var(--shadow);
 }
 
-/* Magic Toggle: Show menu when clicked */
+/* Show menu ONLY when checkbox is clicked */
 #menu-toggle:checked ~ .nav-links {
     display: flex;
 }
 
 .nav-links li {
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-links a {
@@ -121,6 +121,7 @@ body {
     padding: 20px;
     color: var(--white);
     text-decoration: none;
+    text-align: center;
     font-weight: 500;
     font-size: 1.1rem;
     transition: var(--transition);
@@ -131,17 +132,18 @@ body {
     color: var(--kerala-gold);
 }
 
-/* Animate Hamburger to X when open */
+/* Animate Hamburger to X when menu is open */
 #menu-toggle:checked ~ .hamburger-icon .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 #menu-toggle:checked ~ .hamburger-icon .bar:nth-child(2) { opacity: 0; }
 #menu-toggle:checked ~ .hamburger-icon .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
 /* --- 5. HERO SECTION --- */
 .hero {
-    height: 70vh;
+    height: 60vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/kerala.jpg');
-    background-position: center;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,10 +152,14 @@ body {
     clip-path: ellipse(150% 100% at 50% 0%);
 }
 
-.hero h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); margin-bottom: 0.8rem; padding: 0 20px; }
+.hero h1 {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    padding: 0 10%;
+}
 
 /* --- 6. SECTIONS & BUTTONS --- */
-.section { padding: 50px 8%; text-align: center; }
+.section { padding: 60px 8%; text-align: center; }
 
 .section-alt {
     background: linear-gradient(135deg, var(--kerala-green), var(--kerala-green-dark));
@@ -165,13 +171,13 @@ body {
 }
 
 .section-alt h2 { color: var(--kerala-gold) !important; }
-.section h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--kerala-green); }
+.section h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--kerala-green); }
 
 .btn {
     display: inline-block;
     padding: 12px 32px;
-    background: var(--kerala-green);
-    color: white;
+    background: var(--white);
+    color: var(--kerala-green);
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
@@ -180,13 +186,23 @@ body {
     margin-top: 15px;
 }
 
-.btn:hover { background: var(--kerala-gold); transform: translateY(-3px); }
+.btn:hover {
+    background: var(--kerala-gold);
+    color: var(--white);
+    transform: translateY(-3px);
+}
 
 /* --- 7. SLIDER --- */
-.slider-section { padding: 40px 0; background: white; overflow: hidden; }
+.slider-section { padding: 40px 0; background: white; overflow: hidden; text-align: center; }
 .slide-track { display: flex; width: calc(220px * 10); animation: scroll 30s linear infinite; }
 .slide { width: 220px; padding: 10px; }
-.slide img { width: 100%; border-radius: 12px; border: 3px solid var(--kerala-gold); }
+.slide img { 
+    width: 100%; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 12px; 
+    border: 3px solid var(--kerala-gold); 
+}
 
 @keyframes scroll {
     0% { transform: translateX(0); }
@@ -200,4 +216,12 @@ footer {
     text-align: center;
     padding: 40px 20px;
     border-top: 6px solid var(--kerala-green);
+}
+
+/* --- 9. MOBILE SPECIFIC OVERRIDES --- */
+@media (max-width: 768px) {
+    .logo-text { font-size: 0.8rem; }
+    .hero { height: 50vh; background-attachment: scroll; clip-path: none; }
+    .section { padding: 40px 5%; }
+    .nav-logo { height: 45px; width: 45px; }
 }
