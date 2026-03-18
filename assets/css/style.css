@@ -244,23 +244,23 @@ body {
 
 .members-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px;
-    max-width: 1200px;
+    /* Responsive: 2 per row on mobile, up to 4 or 5 on desktop */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+    gap: 40px 20px; /* More vertical space (40px) between rows */
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 40px 20px;
 }
-
 /* Member Card with Kerala Border */
 .member-card {
-    background: #ffffff;
-    padding: 30px 20px;
-    border-radius: 15px;
-    /* Gold border on top and bottom like a Kasavu border */
-    border-top: 5px solid var(--kerala-gold);
-    border-bottom: 5px solid var(--kerala-gold);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
+    /* REMOVED: background, box-shadow, and borders */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: transparent; /* Makes the square disappear */
 }
+
 
 .member-card:hover {
     transform: translateY(-10px);
