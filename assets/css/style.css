@@ -210,69 +210,71 @@ body {
     100% { transform: translateX(calc(-220px * 5)); }
 }
 
-/* --- 10. MEMBERS GRID & UNIFORM IMAGES --- */
+/* --- 8. CLEAN CIRCULAR MEMBERS GRID --- */
+.members-section {
+    padding: 60px 5%;
+    text-align: center;
+    background: var(--ivory-bg);
+}
+
 .members-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 30px;
-    padding: 40px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+    /* This creates 2 columns on mobile and up to 4 on desktop automatically */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+    gap: 25px;
+    max-width: 1100px;
+    margin: 40px auto 0;
 }
 
 .member-card {
     background: #fff;
     border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: var(--shadow);
+    padding: 25px 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     transition: var(--transition);
     border: 1px solid rgba(212, 160, 23, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .member-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     border-color: var(--kerala-gold);
 }
 
-/* THE FIX: Force all images to be the exact same square size */
+/* THE CIRCLE FIX: Works on all browsers including mobile */
 .member-img-container {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* Forces a perfect square */
-    overflow: hidden;
-    border-radius: 15px;
+    width: 130px;        /* Fixed size for all circles */
+    height: 130px;
     margin-bottom: 15px;
-    border: 3px solid var(--kerala-gold);
+    border-radius: 50%;   /* Makes it a circle */
+    border: 4px solid var(--kerala-gold);
+    overflow: hidden;     /* Clips the image into the circle */
+    background: #f0f0f0;  /* Placeholder color */
 }
 
 .member-img-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Crops the image to fit the square perfectly */
-    object-position: center top; /* Focuses on the face */
-    transition: transform 0.5s ease;
-}
-
-.member-card:hover img {
-    transform: scale(1.1); /* Subtle zoom on hover */
+    object-fit: cover;    /* Prevents stretching */
+    object-position: center top;
 }
 
 .member-card h3 {
     color: var(--kerala-green-dark);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 5px;
 }
 
 .member-card .position {
     color: var(--kerala-gold);
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
-
-
-/* --- 8. FOOTER --- */
+/* --- 9. FOOTER --- */
 footer {
     background: #111;
     color: #888;
@@ -281,10 +283,19 @@ footer {
     border-top: 6px solid var(--kerala-green);
 }
 
-/* --- 9. MOBILE SPECIFIC OVERRIDES --- */
+/* --- 10. MOBILE SPECIFIC OVERRIDES --- */
 @media (max-width: 768px) {
     .logo-text { font-size: 0.65rem; }
     .hero { height: 50vh; background-attachment: scroll; clip-path: none; }
     .section { padding: 40px 5%; }
     .nav-logo { height: 45px; width: 45px; }
+        .members-grid {
+        grid-template-columns: repeat(2, 1fr); /* Forces 2 per row on small phones */
+        gap: 15px;
+    }
+    .member-img-container {
+        width: 100px; /* Slightly smaller circles for small screens */
+        height: 100px;
+    }
+    .member-card h3 { font-size: 0.95rem; }
 }
