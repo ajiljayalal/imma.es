@@ -3,7 +3,7 @@
     --kerala-green: #0b6e4f;
     --kerala-green-dark: #074a35;
     --kerala-gold: #d4a017;
-    --ivory-bg: #fffdf7;
+    --ivory-bg: #fcf9c2;
     --text-dark: #1a1a1a;
     --white: #ffffff;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -396,12 +396,12 @@ body {
 
 .gallery-grid {
     display: grid;
-    /* This creates 2 columns on mobile and up to 4 on desktop automatically */
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-    gap: 30px;
-    max-width: 100px; 
-    margin: 0 auto;
-    padding: 20px 0;
+    /* Small blocks: min 150px, max as many as fit */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    gap: 15px;                /* Tight spacing for a professional feel */
+    max-width: 1000px;        /* Keeps the grid centered and compact */
+    margin: 30px auto;
+    padding: 0 15px;
 }
 .event-card {
     text-decoration: none; /* Removes link underline */
