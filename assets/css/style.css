@@ -41,25 +41,29 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
+
+/* Logo & Title Alignment */
 .nav-brand {
     display: flex;
     align-items: center;
     gap: 12px;
+    height: 100%;
 }
 
 .nav-logo {
-    height: 80px;
-    width: auto;
-    border-radius: 5px;
+    height: 50px; /* Constrains your 640px image */
+    width: 50px;  /* Keeps it square */
+    object-fit: cover;
+    border-radius: 4px;
     border: 1px solid var(--kerala-gold);
 }
 
 .logo {
     color: white;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    max-width: 200px; /* Prevents text from pushing the hamburger off-screen */
 }
 
 /* Hidden Checkbox for Toggle */
@@ -69,11 +73,10 @@ body {
 
 /* Hamburger Icon */
 .hamburger {
-    display: none;
+    display: flex; /* Always visible */
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    padding: 5px;
     z-index: 1001;
 }
 
