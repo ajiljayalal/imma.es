@@ -209,79 +209,92 @@ body {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-220px * 5)); }
 }
+/* Kerala Theme Palette */
+:root {
+    --kerala-gold: #d4af37;      /* Traditional Gold */
+    --kerala-white: #fdfaf1;     /* Mundu/Kasavu Off-white */
+    --kerala-green: #1b5e20;     /* Lush Coconut Green */
+    --kerala-dark: #2c3e50;
+}
 
-/* --- 8. CLEAN CIRCULAR MEMBERS GRID --- */
 .members-section {
-    padding: 60px 5%;
+    padding: 80px 20px;
     text-align: center;
-    background: var(--ivory-bg);
+    background-color: var(--kerala-white); /* Off-white background */
+}
+
+.members-section h2 {
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: var(--kerala-green);
+    position: relative;
+    display: inline-block;
+}
+
+/* Gold underline accent for the title */
+.members-section h2::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 4px;
+    background: var(--kerala-gold);
+    margin: 10px auto 0;
+    border-radius: 2px;
 }
 
 .members-grid {
     display: grid;
-    /* Forces 2 per row on mobile, up to 4 on desktop */
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
-    gap: 20px;
-    padding: 20px;
-    max-width: 1100px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
     margin: 0 auto;
-    align-items: start; /* Prevents cards from stretching vertically */
 }
 
+/* Member Card with Kerala Border */
 .member-card {
     background: #ffffff;
+    padding: 30px 20px;
     border-radius: 15px;
-    padding: 20px 10px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto; /* Ensures card only grows as much as the content */
+    /* Gold border on top and bottom like a Kasavu border */
+    border-top: 5px solid var(--kerala-gold);
+    border-bottom: 5px solid var(--kerala-gold);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
 }
 
 .member-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--kerala-gold);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* THE CIRCLE FIX: Works on all browsers including mobile */
-/* THE IMAGE FIX: Prevents the "Long Card" look */
-.member-img-container {
-    width: 130px;           /* Fixed size like a profile pic */
-    height: 130px;          /* Must match width for a perfect circle */
-    margin: 0 auto 15px;    /* Centers the circle in the card */
-    border-radius: 50%;     /* This makes the container a circle */
-    border: 4px solid var(--kerala-gold);
-    overflow: hidden;       /* IMPORTANT: This cuts off the 1200x700 edges */
-    background: #eee;       /* Background color if image fails to load */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* WhatsApp DP Style with Green Border */
+.member-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--kerala-green); /* Green border for the photo */
+    padding: 3px;
+    background-color: white;
+    margin-bottom: 20px;
 }
 
-
-.member-img-container img {
-    width: 100%;            /* Fills the 130px width */
-    height: 100%;           /* Fills the 130px height */
-    object-fit: cover;      /* THIS IS THE MAGIC: It crops the wide 1200px 
-                               edges without squashing the face */
-    object-position: center top; /* Focuses on the face/head area */
-}
-
+/* Name and Position Styling */
 .member-card h3 {
-    color: var(--kerala-green-dark);
-    font-size: 1.1rem;
-    margin-bottom: 5px;
+    margin: 10px 0 5px;
+    font-size: 1.3rem;
+    color: var(--kerala-dark);
+    font-family: 'Georgia', serif; /* Classic look */
 }
 
 .member-card .position {
-    color: var(--kerala-gold);
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 1rem;
+    color: var(--kerala-green);
+    font-weight: 600;
     letter-spacing: 0.5px;
+    margin: 0;
 }
+
 /* --- 11. HIGH-PERFORMANCE GALLERY --- */
 .gallery-section {
     padding: 60px 5%;
